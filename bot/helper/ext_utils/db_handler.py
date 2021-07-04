@@ -49,21 +49,12 @@ class DbManger:
         if self.err :
             return "There's some error check log for details"
         else:
-            if chat_id in AUTHORIZED_CHATS:
-                sql = 'UPDATE users SET sudo = TRUE where uid = {};'.format(chat_id)
-                self.cur.execute(sql)
-                self.conn.commit()
-                self.disconnect()
-                SUDO_USERS.add(chat_id)
-                return 'Successfully promoted as Sudo'
-            else:
-                sql = 'INSERT INTO users VALUES ({},TRUE);'.format(chat_id)
-                self.cur.execute(sql)
-                self.conn.commit()
-                self.disconnect()
-                AUTHORIZED_CHATS.add(chat_id)
-                SUDO_USERS.add(chat_id)
-                return 'Successfully Authorized and promoted as Sudo'
+            sql = 'INSERT INTO users VALUES ({},TRUE);'.format(chat_id)
+            self.cur.execute(sql)
+            self.conn.commit()
+            self.disconnect()
+            SUDO_USERS.add(chat_id)
+            return 'Successfully promoted as Sudo'
 
     def db_rmsudo(self,chat_id: int):
         self.connect()
