@@ -121,9 +121,9 @@ def bot_help(update, context):
 
 /{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner of the bot)
 
-/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner of the bot)
 
 /{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
 
@@ -147,7 +147,7 @@ def bot_help(update, context):
 
 /{BotCommands.ShellCommand}: Run commands in Shell (Terminal)
 
-/tshelp: Get help for Torrent search module
+/tshelp: Get help for Torrent search module (Owner Only)
 '''
 
     help_string = f'''
@@ -181,7 +181,6 @@ def bot_help(update, context):
 
 /{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
 
-/tshelp: Get help for Torrent search module
 '''
 
     if CustomFilters.sudo_user(update) or CustomFilters.owner_filter(update):
